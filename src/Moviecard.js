@@ -10,6 +10,10 @@ class MovieCard extends React.Component{
             price:199,
             rating:8.9
         }
+        this.addStars = this.addStars.bind(this)
+    }
+    addStars(){
+        console.log("this.state", this);
     }
 
     render(){
@@ -51,6 +55,7 @@ class MovieCard extends React.Component{
                                 <img className="str-btn" 
                                     alt="increase" 
                                     src="https://cdn-icons-png.flaticon.com/128/2997/2997933.png" 
+                                    onClick={this.addStars}
                                 />
                                 <span className="starCount">0</span>
                             </div>
