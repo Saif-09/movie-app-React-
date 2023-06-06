@@ -1,17 +1,19 @@
 import React from "react";
 
 class MovieCard extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      title: "The Avengers",
-      plot: "Supernatural powers shown in the movie",
-      price: 199,
-      rating: 8.9,
-      stars: 0,
-    };
-    this.addStars = this.addStars.bind(this);
-  }
+//   constructor() {
+//     super();
+//     this.state = {
+//       title: "The Avengers",
+//       plot: "Supernatural powers shown in the movie",
+//       price: 199,
+//       rating: 8.9,
+//       stars: 0,
+//       fav:false,
+//       cart: false,
+//     };
+//     this.addStars = this.addStars.bind(this);
+//   }
   //we can use arrow function to by default bind it
   addStars = () => {
     //form 1
@@ -47,8 +49,21 @@ class MovieCard extends React.Component {
     });
   };
 
+  handleFav=()=>{
+    this.setState({
+        fav: !this.state.fav
+    })
+
+  }
+
+  handleCart=()=>{
+    this.setState({
+        cart: !this.state.cart
+        })
+  }
+
   render() {
-    const { title, plot, price, rating, stars } = this.state;
+    const { title, plot, price, rating, stars } = this.props;
     return (
       <div className="main">
         {/**Movie Card */}
@@ -95,8 +110,10 @@ class MovieCard extends React.Component {
               </div>
 
               {/**Favourite and add to cart buttons */}
-              <button className="favourite-btn">Favourite</button>
-              <button className="cart-btn">Add to Cart</button>
+              {this.props.fav? <button className="unfavourite-btn" onClick={this.handleFav}>Unlike</button> : <button className="favourite-btn" onClick={this.handleFav}>Like</button> }
+              
+              {this.props.cart? <button className="rem-cart-btn" onClick={this.handleCart}>Remove</button> : <button className="cart-btn" onClick={this.handleCart}>Add to Cart</button> }
+              
             </div>
           </div>
         </div>
