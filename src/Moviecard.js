@@ -17,9 +17,19 @@ class MovieCard extends React.Component{
     addStars=()=>{
 
         //form 1
-        this.setState({
-            stars:this.state.stars+0.5
-        });
+        // this.setState({
+        //     stars:this.state.stars+0.5
+        // });
+
+        //Second Form
+        this.setState((prevState)=>{
+            return{
+                stars:prevState.stars+0.5
+
+            }
+        })
+
+
         // this.state.stars +=0.5;
         // console.log("this.state.stars", this.state.stars);
     }
