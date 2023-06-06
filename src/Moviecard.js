@@ -15,8 +15,13 @@ class MovieCard extends React.Component{
     }
     //we can use arrow function to by default bind it
     addStars=()=>{
-        this.state.stars +=0.5;
-        console.log("this.state.stars", this.state.stars);
+
+        //form 1
+        this.setState({
+            stars:this.state.stars+0.5
+        });
+        // this.state.stars +=0.5;
+        // console.log("this.state.stars", this.state.stars);
     }
 
     render(){
