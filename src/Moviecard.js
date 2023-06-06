@@ -12,7 +12,8 @@ class MovieCard extends React.Component{
         }
         this.addStars = this.addStars.bind(this)
     }
-    addStars(){
+    //we can use arrow function to by default bind it
+    addStars=()=>{
         console.log("this.state", this);
     }
 
