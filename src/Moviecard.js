@@ -8,17 +8,19 @@ class MovieCard extends React.Component{
             title: "The Avengers",
             plot:"Supernatural powers shown in the movie",
             price:199,
-            rating:8.9
+            rating:8.9,
+            stars:0,
         }
         this.addStars = this.addStars.bind(this)
     }
     //we can use arrow function to by default bind it
     addStars=()=>{
-        console.log("this.state", this);
+        this.state.stars +=0.5;
+        console.log("this.state.stars", this.state.stars);
     }
 
     render(){
-          const {title,plot,price,rating} = this.state;
+          const {title,plot,price,rating,stars} = this.state;
         return(
 
             <div className="main">
@@ -58,7 +60,7 @@ class MovieCard extends React.Component{
                                     src="https://cdn-icons-png.flaticon.com/128/2997/2997933.png" 
                                     onClick={this.addStars}
                                 />
-                                <span className="starCount">0</span>
+                                <span className="starCount">{stars}</span>
                             </div>
 
                             {/**Favourite and add to cart buttons */}
