@@ -6,7 +6,8 @@ class MovieList extends React.Component {
     super();
     this.state = {
       movies: [
-        {
+        { 
+          id:1,
           title: "The Avengers",
           plot: "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
           poster:
@@ -17,7 +18,8 @@ class MovieList extends React.Component {
           fav: false,
           isInCart: false,
         },
-        {
+        { 
+          id:2,
           title: "The Dark Knight",
           plot: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
           poster:
@@ -28,7 +30,8 @@ class MovieList extends React.Component {
           fav: false,
           isInCart: false,
         },
-        {
+        { 
+          id:3,
           title: "Iron Man",
           plot: "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
           poster:
@@ -57,35 +60,35 @@ class MovieList extends React.Component {
     });
   };
 
-  handleDecStar = (movie)=>{
+  handleDecStar = (movie) => {
     const { movies } = this.state;
     const mid = movies.indexOf(movie);
     if (movies[mid].star <= 0) {
       return;
-      }
-      movies[mid].star -= 0.5;
-      this.setState({
-        movies: movies,
-      });
-  }
+    }
+    movies[mid].star -= 0.5;
+    this.setState({
+      movies: movies,
+    });
+  };
 
-  handleToggleFav = (movie)=>{
+  handleToggleFav = (movie) => {
     const { movies } = this.state;
     const mid = movies.indexOf(movie);
     movies[mid].fav = !movies[mid].fav;
     this.setState({
       movies: movies,
-    })
-  }
+    });
+  };
 
-  handleAddtocart = (mov)=>{
+  handleAddtocart = (mov) => {
     const { movies } = this.state;
     const mid = movies.indexOf(mov);
     movies[mid].isInCart = !movies[mid].isInCart;
     this.setState({
       movies: movies,
-    })
-  }
+    });
+  };
 
   render() {
     const { movies } = this.state;
@@ -93,13 +96,14 @@ class MovieList extends React.Component {
     return (
       <>
         {movies.map((movie, index) => (
-          <MovieCard 
-          movies={movie} key={index} 
-          addStars={this.handleIncStar}
-          decStars={this.handleDecStar}
-          onClickFav={this.handleToggleFav}
-          onClickAddtocart={this.handleAddtocart}
-           />
+          <MovieCard
+            movies={movie}
+            key={index}
+            addStars={this.handleIncStar}
+            decStars={this.handleDecStar}
+            onClickFav={this.handleToggleFav}
+            onClickAddtocart={this.handleAddtocart}
+          />
         ))}
       </>
     );

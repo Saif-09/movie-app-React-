@@ -1,11 +1,12 @@
 import React from "react";
 
 class MovieCard extends React.Component {
-
   render() {
     console.log(this.props);
-    const{movies,addStars,decStars,onClickFav,onClickAddtocart} = this.props;
-    const { title, plot, price, rating, star, fav,isInCart } = this.props.movies;
+    const { movies, addStars, decStars, onClickFav, onClickAddtocart } =
+      this.props;
+    const { title, plot, price, rating, star, fav, isInCart } =
+      this.props.movies;
     return (
       <div className="main">
         {/**Movie Card */}
@@ -35,7 +36,9 @@ class MovieCard extends React.Component {
                   className="str-btn"
                   alt="Decrease"
                   src="https://cdn-icons-png.flaticon.com/128/2801/2801932.png"
-                  onClick={()=>{decStars(movies)}}
+                  onClick={() => {
+                    decStars(movies);
+                  }}
                 />
                 <img
                   className="stars"
@@ -46,22 +49,27 @@ class MovieCard extends React.Component {
                   className="str-btn"
                   alt="increase"
                   src="https://cdn-icons-png.flaticon.com/128/2997/2997933.png"
-                  onClick={()=>{addStars(movies)}}
+                  onClick={() => {
+                    addStars(movies);
+                  }}
                 />
                 <span className="starCount">{star}</span>
               </div>
 
               {/**Favourite and add to cart buttons */}
-              <button className={fav?"unfavourite-btn":"favourite-btn"}
-                      onClick={()=>onClickFav(movies)}>
-                        {fav?"Un-favourite":"Favourite"}
-                      </button>
-              
-              <button className={isInCart?"rem-cart-btn":"cart-btn"}
-                      onClick={()=>onClickAddtocart(movies)}>
-                        {isInCart?"Remove from cart":"Add to Cart"}
-                      </button>
-              
+              <button
+                className={fav ? "unfavourite-btn" : "favourite-btn"}
+                onClick={() => onClickFav(movies)}
+              >
+                {fav ? "Un-favourite" : "Favourite"}
+              </button>
+
+              <button
+                className={isInCart ? "rem-cart-btn" : "cart-btn"}
+                onClick={() => onClickAddtocart(movies)}
+              >
+                {isInCart ? "Remove from cart" : "Add to Cart"}
+              </button>
             </div>
           </div>
         </div>
