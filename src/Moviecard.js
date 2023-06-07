@@ -1,70 +1,11 @@
 import React from "react";
 
 class MovieCard extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       title: "The Avengers",
-//       plot: "Supernatural powers shown in the movie",
-//       price: 199,
-//       rating: 8.9,
-//       stars: 0,
-//       fav:false,
-//       cart: false,
-//     };
-//     this.addStars = this.addStars.bind(this);
-//   }
-  //we can use arrow function to by default bind it
-  addStars = () => {
-    //form 1
-    if (this.state.stars >= 10) {
-      return;
-    }
-    this.setState({
-      stars: this.state.stars + 0.5,
-    });
-
-    //Second Form
-
-    // this.setState((prevState)=>{
-    //     return{
-    //         stars:prevState.stars+0.5
-
-    //     }
-    // })
-
-    // this.state.stars +=0.5;
-    // console.log("this.state.stars", this.state.stars);
-  };
-
-  decStars = () => {
-    if (this.state.stars <= 0) {
-      return;
-    }
-
-    this.setState((prevState) => {
-      return {
-        stars: prevState.stars - 0.5,
-      };
-    });
-  };
-
-  handleFav=()=>{
-    this.setState({
-        fav: !this.state.fav
-    })
-
-  }
-
-  handleCart=()=>{
-    this.setState({
-        cart: !this.state.cart
-        })
-  }
 
   render() {
     console.log(this.props);
-    const { title, plot, price, rating, stars } = this.props.movies;
+    const{movies,addStars,decStars,onClickFav,onClickAddtocart} = this.props;
+    const { title, plot, price, rating, star, fav,isInCart } = this.props.movies;
     return (
       <div className="main">
         {/**Movie Card */}
@@ -94,7 +35,7 @@ class MovieCard extends React.Component {
                   className="str-btn"
                   alt="Decrease"
                   src="https://cdn-icons-png.flaticon.com/128/2801/2801932.png"
-                  onClick={this.decStars}
+                  onClick={()=>{decStars(movies)}}
                 />
                 <img
                   className="stars"
@@ -105,15 +46,21 @@ class MovieCard extends React.Component {
                   className="str-btn"
                   alt="increase"
                   src="https://cdn-icons-png.flaticon.com/128/2997/2997933.png"
-                  onClick={this.addStars}
+                  onClick={()=>{addStars(movies)}}
                 />
-                <span className="starCount">{stars}</span>
+                <span className="starCount">{star}</span>
               </div>
 
               {/**Favourite and add to cart buttons */}
-              {this.props.fav? <button className="unfavourite-btn" onClick={this.handleFav}>Unlike</button> : <button className="favourite-btn" onClick={this.handleFav}>Like</button> }
+              <button className={fav?"unfavourite-btn":"favourite-btn"}
+                      onClick={()=>onClickFav(movies)}>
+                        {fav?"Un-favourite":"Favourite"}
+                      </button>
               
-              {this.props.cart? <button className="rem-cart-btn" onClick={this.handleCart}>Remove</button> : <button className="cart-btn" onClick={this.handleCart}>Add to Cart</button> }
+              <button className={isInCart?"rem-cart-btn":"cart-btn"}
+                      onClick={()=>onClickAddtocart(movies)}>
+                        {isInCart?"Remove from cart":"Add to Cart"}
+                      </button>
               
             </div>
           </div>
