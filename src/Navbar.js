@@ -19,6 +19,7 @@ font-weight:600;
 font-family: Monsterrat,sans-serif;
 text-transform: uppercase;
 margin-left:20px;
+&:hover{color:red}//like this we can use pseudo classes
 `;
 
 const CartContainer = styled.div`
@@ -33,15 +34,16 @@ const CartIcon = styled.img`
 `;
 
 const CartCount = styled.span`
-        background:orange;
+        background:${(props)=>props.color};
         border-radius:50%;
         padding: 4px 8px;
         position: absolute;
         right:10px;
         top:-5px;
         font-size:12px;
+        display: ${(props)=>props.show?"":"none"};
 
-`
+`;
 
 class Navbar extends React.Component{
     render(){
@@ -51,7 +53,7 @@ class Navbar extends React.Component{
                 <Title>Movie-App</Title>
                 <CartContainer>
                     <CartIcon src="https://cdn-icons-png.flaticon.com/128/891/891462.png" alt="Cart Item"/>
-                    <CartCount>0</CartCount>
+                    <CartCount color="red" show={false}>3</CartCount>
                 </CartContainer>
             </Nav>
             </>
