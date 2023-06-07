@@ -23,15 +23,9 @@ class MovieList extends React.Component {
     
     return (
         <>
-        //This is one way of defining props
-        <MovieCard title = {title}
-                   plot = {plot}
-                   price = {price}
-                   rating = {rating}
-                   stars = {stars}
-                   fav = {fav}
-                   cart = {cart}
-                   />
+        
+        <MovieCard movies = {this.state}/>
+                   
       </>
     );
   }

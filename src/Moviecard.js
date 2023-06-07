@@ -63,7 +63,8 @@ class MovieCard extends React.Component {
   }
 
   render() {
-    const { title, plot, price, rating, stars } = this.props;
+    console.log(this.props);
+    const { title, plot, price, rating, stars } = this.props.movies;
     return (
       <div className="main">
         {/**Movie Card */}
