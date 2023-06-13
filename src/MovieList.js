@@ -1,11 +1,8 @@
-import React from "react";
 import MovieCard from "./Moviecard";
 
-class MovieList extends React.Component {
+function MovieList(props) {
   
-
-  render() {
-    const { movies, addStars,decStars,toggleFav,toggleCart } = this.props;
+    const { movies, addStars,decStars,toggleFav,toggleCart } = props;
 
     return (
       <>
@@ -21,7 +18,7 @@ class MovieList extends React.Component {
         ))}
       </>
     );
-  }
+  
 }
 
 export default MovieList;

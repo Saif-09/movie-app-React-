@@ -44,9 +44,9 @@ const CartCount = styled.span`
   display: ${(props) => (props.show ? "" : "none")};
 `;
 
-class Navbar extends React.Component {
-  render() {
-    const {cartCount} = this.props;
+function Navbar(props)  {
+  
+    const {cartCount} = props;
     return (
       <>
         <Nav>
@@ -63,7 +63,7 @@ class Navbar extends React.Component {
         </Nav>
       </>
     );
-  }
+  
 }
 
 export default Navbar;
